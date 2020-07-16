@@ -10,12 +10,12 @@ public class Solution7 {
         int a = Integer.parseInt(bufferedReader.readLine());
         int b = Integer.parseInt(bufferedReader.readLine());
         int c = Integer.parseInt(bufferedReader.readLine());
-        int counter = 0;
 
-        if (a > 0) counter++;
-        if (b > 0) counter++;
-        if (c > 0) counter++;
+        if (a == b || b == c || a == c) {
+            if (a != b && a != c) System.out.println(1);
+            if (b != a && b != c) System.out.println(2);
+            if (c != b && c != a) System.out.println(3);
+        }
 
-        System.out.println(counter);
     }
 }

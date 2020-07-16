@@ -1,21 +1,15 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
 
 public class Solution10 {
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    public static void main(String[] args) {
 
-        int a = Integer.parseInt(bufferedReader.readLine());
-        int b = Integer.parseInt(bufferedReader.readLine());
-        int c = Integer.parseInt(bufferedReader.readLine());
-        int counter = 0;
+        int counter = 1;
 
-        if (a > 0) counter++;
-        if (b > 0) counter++;
-        if (c > 0) counter++;
+        while (counter <= 100) {
+            System.out.print("S");
+            if (counter % 10 == 0) System.out.println();
+            counter++;
+        }
 
-        System.out.println(counter);
     }
 }

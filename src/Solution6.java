@@ -10,12 +10,17 @@ public class Solution6 {
         int a = Integer.parseInt(bufferedReader.readLine());
         int b = Integer.parseInt(bufferedReader.readLine());
         int c = Integer.parseInt(bufferedReader.readLine());
-        int counter = 0;
+        int counter1 = 0;
+        int counter2 = 0;
 
-        if (a > 0) counter++;
-        if (b > 0) counter++;
-        if (c > 0) counter++;
+        if (a > 0) counter1++;
+        if (b > 0) counter1++;
+        if (c > 0) counter1++;
+        if (a < 0) counter2++;
+        if (b < 0) counter2++;
+        if (c < 0) counter2++;
 
-        System.out.println(counter);
+        System.out.println("количество отрицательных чисел: " + counter2);
+        System.out.println("количество положительных чисел: " + counter1);
     }
 }

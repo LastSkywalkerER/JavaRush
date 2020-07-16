@@ -8,14 +8,14 @@ public class Solution8 {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         int a = Integer.parseInt(bufferedReader.readLine());
-        int b = Integer.parseInt(bufferedReader.readLine());
-        int c = Integer.parseInt(bufferedReader.readLine());
-        int counter = 0;
 
-        if (a > 0) counter++;
-        if (b > 0) counter++;
-        if (c > 0) counter++;
+        if (a > 0) {
+            if (a % 2 == 0) System.out.println("положительное четное число");
+            else System.out.println("положительное нечетное число");
+        } else if (a < 0) {
+            if (a % 2 == 0) System.out.println("отрицательное четное число");
+            else System.out.println("отрицательное нечетное число");
+        } else System.out.println("ноль");
 
-        System.out.println(counter);
     }
 }

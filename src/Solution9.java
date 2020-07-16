@@ -8,14 +8,16 @@ public class Solution9 {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         int a = Integer.parseInt(bufferedReader.readLine());
-        int b = Integer.parseInt(bufferedReader.readLine());
-        int c = Integer.parseInt(bufferedReader.readLine());
-        int counter = 0;
 
-        if (a > 0) counter++;
-        if (b > 0) counter++;
-        if (c > 0) counter++;
+        if (a % 2 == 0) {
+            if (a < 10 && a > 0) System.out.println("четное однозначное число");
+            else if (a < 100 && a > 0) System.out.println("четное двузначное число");
+            else if (a < 1000 && a > 0) System.out.println("четное трехзначное число");
+        } else {
+            if (a < 10 && a > 0) System.out.println("нечетное однозначное число");
+            else if (a < 100 && a > 0) System.out.println("нечетное двузначное число");
+            else if (a < 1000 && a > 0) System.out.println("нечетное трехзначное число");
+        }
 
-        System.out.println(counter);
     }
 }
