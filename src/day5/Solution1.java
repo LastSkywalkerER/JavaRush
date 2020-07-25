@@ -1,45 +1,69 @@
-package Day5;
+package day5;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.InputStreamReader;
+
+/*
+Родственные связи кошек
+*/
 
 public class Solution1 {
-
     public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        // int a = Integer.parseInt(bufferedReader.readLine());
+        String grandFatherName = reader.readLine();
+        Cat catGrandFather = new Cat(grandFatherName);
 
-        ArrayList<String> list = new ArrayList<String>();
-        ArrayList<String> maxList = new ArrayList<String>();
+        String grandMotherName = reader.readLine();
+        Cat catGrandMother = new Cat(grandMotherName);
 
-        // list.size();
-        // list.get(i);
-        // list.set(i,s);
-        // list.add(s); добавление в конец
-        // list.add(i,s); добавление в середину
-        // list.remove(i);
+        String fatherName = reader.readLine();
+        Cat catFather = new Cat(fatherName, null, catGrandFather);
 
+        String motherName = reader.readLine();
+        Cat catMother = new Cat(motherName, catGrandMother, null);
 
-        int size = Integer.MIN_VALUE;
+        String sonName = reader.readLine();
+        Cat catSon = new Cat(sonName, catMother, catFather);
 
-        for (int i = 0; i < 10; i++) {
-            String a = bufferedReader.readLine();
-            list.add(a);
-        }
+        String daughterName = reader.readLine();
+        Cat catDaughter = new Cat(daughterName, catMother, catFather);
 
-        for (int i = 0; i < 10; i++) {
-
-            if (list.get(i).length() >= size) {
-                size = list.get(i).length();
-            } else {
-                System.out.println(i);
-                break;
-            }
-
-        }
-
+        System.out.println(catGrandFather);
+        System.out.println(catGrandMother);
+        System.out.println(catFather);
+        System.out.println(catMother);
+        System.out.println(catSon);
+        System.out.println(catDaughter);
     }
+
+    public static class Cat {
+        private String name;
+        private Cat mother;
+        private Cat father;
+
+        Cat(String name) {
+            this.name = name;
+        }
+
+        Cat(String name, Cat mother, Cat father) {
+            this.name = name;
+            this.mother = mother;
+            this.father = father;
+        }
+
+        @Override
+        public String toString() {
+            if (mother == null && father == null)
+                return "The cat's name is " + name + ", no mother, no father ";
+            else if (mother == null && father != null)
+                return "The cat's name is " + name + ", no mother, father is " + father.name;
+            if (mother != null && father == null)
+                return "The cat's name is " + name + " mother is" + mother.name + ", no father ";
+            else
+                return "The cat's name is " + name + ", mother is " + mother.name + ", father is " + father.name;
+        }
+    }
+
 }
