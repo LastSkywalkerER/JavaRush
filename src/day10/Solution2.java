@@ -34,32 +34,39 @@ public class Solution2 {
     public static void sort(String[] array) {
         // напишите тут ваш код
         Map<Integer, String> str = new HashMap<>();
+        int[] pozStr = new int[array.length];
+
         Map<Integer, String> num = new HashMap<>();
+        int[] pozNum = new int[array.length];
 
         for (int i = 0; i < array.length; i++) {
+            int strCounter = 0;
+            int numCounter = 0;
             if (isNumber(array[i])) {
                 num.put(i, array[i]);
+                pozNum[numCounter++] = i;
             } else {
                 str.put(i, array[i]);
+                pozStr[strCounter++] = i;
             }
         }
 
         for (int i = 1; i < num.size(); i++) {
             for (int k = 0; k < num.size() - i; k++) {
-                if (isGreaterThan(num.get(k), num.get(k + 1))) {
-                    String temp = num.get(k);
-                    num.put(k, num.get(k + 1));
-                    num.put(k + 1, temp);
+                if (isGreaterThan(num.get(pozNum[k]), num.get(pozNum[k] + 1))) {
+                    String temp = num.get(pozNum[k]);
+                    num.put(pozNum[k], num.get(pozNum[k] + 1));
+                    num.put(pozNum[k] + 1, temp);
                 }
             }
         }
 
         for (int i = 1; i < str.size(); i++) {
             for (int k = 0; k < str.size() - i; k++) {
-                if (!isGreaterThan(str.get(k), str.get(k + 1))) {
-                    String temp = str.get(k);
-                    num.put(k, str.get(k + 1));
-                    str.put(k + 1, temp);
+                if (!isGreaterThan(str.get(pozStr[k]), str.get(pozStr[k] + 1))) {
+                    String temp = str.get(pozStr[k]);
+                    num.put(pozStr[k], str.get(pozStr[k] + 1));
+                    str.put(pozStr[k] + 1, temp);
                 }
             }
         }
