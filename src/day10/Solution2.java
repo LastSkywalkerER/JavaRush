@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /*
@@ -39,9 +38,11 @@ public class Solution2 {
         Map<Integer, String> num = new HashMap<>();
         int[] pozNum = new int[array.length];
 
+        int strCounter = 0;
+        int numCounter = 0;
+
         for (int i = 0; i < array.length; i++) {
-            int strCounter = 0;
-            int numCounter = 0;
+
             if (isNumber(array[i])) {
                 num.put(i, array[i]);
                 pozNum[numCounter++] = i;
@@ -53,20 +54,20 @@ public class Solution2 {
 
         for (int i = 1; i < num.size(); i++) {
             for (int k = 0; k < num.size() - i; k++) {
-                if (isGreaterThan(num.get(pozNum[k]), num.get(pozNum[k] + 1))) {
+                if (Integer.parseInt(num.get(pozNum[k])) < Integer.parseInt(num.get(pozNum[k + 1]))) {
                     String temp = num.get(pozNum[k]);
-                    num.put(pozNum[k], num.get(pozNum[k] + 1));
-                    num.put(pozNum[k] + 1, temp);
+                    num.put(pozNum[k], num.get(pozNum[k + 1]));
+                    num.put(pozNum[k + 1], temp);
                 }
             }
         }
 
         for (int i = 1; i < str.size(); i++) {
             for (int k = 0; k < str.size() - i; k++) {
-                if (!isGreaterThan(str.get(pozStr[k]), str.get(pozStr[k] + 1))) {
+                if (isGreaterThan(str.get(pozStr[k]), str.get(pozStr[k + 1]))) {
                     String temp = str.get(pozStr[k]);
-                    num.put(pozStr[k], str.get(pozStr[k] + 1));
-                    str.put(pozStr[k] + 1, temp);
+                    str.put(pozStr[k], str.get(pozStr[k + 1]));
+                    str.put(pozStr[k + 1], temp);
                 }
             }
         }
