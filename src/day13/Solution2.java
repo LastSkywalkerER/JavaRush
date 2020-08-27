@@ -37,7 +37,7 @@ public class Solution2 {
 
         for (int i = 0; i < 10; i++) {
             for (Character letter : list.get(i).toCharArray()) {
-                counter.replace(letter, counter.get(letter) + 1);
+                if (counter.containsKey(Character.toLowerCase(letter))) counter.replace(Character.toLowerCase(letter), counter.get(Character.toLowerCase(letter)) + 1);
             }
         }
 
